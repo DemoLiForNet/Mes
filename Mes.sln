@@ -3,9 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F6E0815-CCBC-4FE1-A484-12FCDC2029E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{74621861-18D9-4782-A1B4-46EDB2A44FC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2BB792EA-07BD-4603-A33F-C1807C34C247}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lisbraries", "Lisbraries", "{306605BB-8F90-4D71-8ED8-C442FDC052A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mes.Identity.API", "Mes.Identity.API\Mes.Identity.API.csproj", "{EF574ECA-D76B-4C40-BCAC-72E7929269C0}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2BB792EA-07BD-4603-A33F-C1807C34C247} = {0F6E0815-CCBC-4FE1-A484-12FCDC2029E6}
+		{306605BB-8F90-4D71-8ED8-C442FDC052A9} = {0F6E0815-CCBC-4FE1-A484-12FCDC2029E6}
+		{EF574ECA-D76B-4C40-BCAC-72E7929269C0} = {2BB792EA-07BD-4603-A33F-C1807C34C247}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB0783F9-9CBD-44D2-B67E-10C2CC117C5B}
