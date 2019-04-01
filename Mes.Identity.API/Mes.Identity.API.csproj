@@ -17,4 +17,9 @@
     <Folder Include="Infrastructure\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mes.Infrastructure\Mes.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
