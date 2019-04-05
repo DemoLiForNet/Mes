@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F6E0815-CCBC-4FE1-A484-12FCDC2029E6}"
 EndProject
@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lisbraries", "Lisbraries", "{306605BB-8F90-4D71-8ED8-C442FDC052A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mes.Identity.API", "Mes.Identity.API\Mes.Identity.API.csproj", "{EF574ECA-D76B-4C40-BCAC-72E7929269C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mes.Core", "Mes.Core\Mes.Core.csproj", "{BC434A61-A67D-449C-9F66-CF10058BC1BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mes.Core", "Mes.Core\Mes.Core.csproj", "{BC434A61-A67D-449C-9F66-CF10058BC1BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mes.Infrastructure", "Mes.Infrastructure\Mes.Infrastructure.csproj", "{79EAFAAB-DC24-4778-9022-E10261F75949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mes.Infrastructure", "Mes.Infrastructure\Mes.Infrastructure.csproj", "{79EAFAAB-DC24-4778-9022-E10261F75949}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{4941A93C-447A-44F6-B4FC-7D1447ED3895}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{4941A93C-447A-44F6-B4FC-7D1447ED3895}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mes.API", "Mes.API\Mes.API.csproj", "{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF574ECA-D76B-4C40-BCAC-72E7929269C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC434A61-A67D-449C-9F66-CF10058BC1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC434A61-A67D-449C-9F66-CF10058BC1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC434A61-A67D-449C-9F66-CF10058BC1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +37,10 @@ Global
 		{4941A93C-447A-44F6-B4FC-7D1447ED3895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4941A93C-447A-44F6-B4FC-7D1447ED3895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4941A93C-447A-44F6-B4FC-7D1447ED3895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,10 +48,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2BB792EA-07BD-4603-A33F-C1807C34C247} = {0F6E0815-CCBC-4FE1-A484-12FCDC2029E6}
 		{306605BB-8F90-4D71-8ED8-C442FDC052A9} = {0F6E0815-CCBC-4FE1-A484-12FCDC2029E6}
-		{EF574ECA-D76B-4C40-BCAC-72E7929269C0} = {2BB792EA-07BD-4603-A33F-C1807C34C247}
 		{BC434A61-A67D-449C-9F66-CF10058BC1BB} = {306605BB-8F90-4D71-8ED8-C442FDC052A9}
 		{79EAFAAB-DC24-4778-9022-E10261F75949} = {306605BB-8F90-4D71-8ED8-C442FDC052A9}
 		{4941A93C-447A-44F6-B4FC-7D1447ED3895} = {306605BB-8F90-4D71-8ED8-C442FDC052A9}
+		{F40B0277-66CC-459E-9C68-C3AD7F9C72AF} = {2BB792EA-07BD-4603-A33F-C1807C34C247}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB0783F9-9CBD-44D2-B67E-10C2CC117C5B}
