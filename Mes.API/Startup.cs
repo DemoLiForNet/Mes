@@ -38,6 +38,7 @@ namespace Mes.API
                     .AddInMemoryIdentityResources(Config.GetResources())
                     .AddInMemoryApiResources(Config.GetApiResources())
                     .AddInMemoryClients(Config.GetClients());
+
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                     {
                         options.SignIn = new SignInOptions
@@ -67,6 +68,15 @@ namespace Mes.API
                        options.RequireHttpsMetadata = false;
                        options.Audience = Configuration.GetValue<string>("ApiName");
                    });
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+             builder =>
+             {
+                 builder.AllowAnyMethod();
+                 builder.AllowAnyHeader();
+                 builder.AllowAnyOrigin();
+                 builder.AllowCredentials();
+             }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +89,7 @@ namespace Mes.API
             app.UseIdentityServer();
             app.UseAuthentication();
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseMvc();
         }
     }
