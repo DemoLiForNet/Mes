@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mes.Infrastructure", "Mes.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{4941A93C-447A-44F6-B4FC-7D1447ED3895}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mes.API", "Mes.API\Mes.API.csproj", "{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mes.API", "Mes.API\Mes.API.csproj", "{F40B0277-66CC-459E-9C68-C3AD7F9C72AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+using Mes.API.Configuration;
+using Mes.Core.Domain;
 using Mes.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Mes.API
 {
@@ -29,15 +27,46 @@ namespace Mes.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            // Add framework services.
             services.AddDbContext<MesDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("IdentityConnectionString"),
                                      sqlServerOptionsAction: sqlOptions =>
                                      {
                                          sqlOptions.MigrationsAssembly(typeof(BaseEntityTypeConfiguration<>).GetTypeInfo().Assembly.GetName().Name);
-                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
                                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                      }));
+            services.AddIdentityServer()
+                    .AddInMemoryIdentityResources(Config.GetResources())
+                    .AddInMemoryApiResources(Config.GetApiResources())
+                    .AddInMemoryClients(Config.GetClients());
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+                    {
+                        options.SignIn = new SignInOptions
+                        {
+                            RequireConfirmedPhoneNumber = true
+                        };
+                        options.Lockout = new LockoutOptions
+                        {
+                            AllowedForNewUsers = false
+                        };
+                        options.Password = new PasswordOptions
+                        {
+                            RequireDigit = false,
+                            RequiredUniqueChars = 0,
+                            RequireLowercase = false,
+                            RequireUppercase = false,
+                            RequireNonAlphanumeric = false,
+                        };
+                    })
+                    .AddEntityFrameworkStores<MesDbContext>()
+                    .AddDefaultTokenProviders();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                   {
+                       options.Authority = Configuration.GetValue<string>("IdentityAuthority"); ;
+                       options.RequireHttpsMetadata = false;
+                       options.Audience = Configuration.GetValue<string>("ApiName");
+                   });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,12 +76,8 @@ namespace Mes.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
+            app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
         }
